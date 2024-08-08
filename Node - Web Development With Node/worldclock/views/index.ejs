@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Clock</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
+</head>
+<body>
+    <h1>World Clock</h1>
+    <div class="clock-container">
+        <% clocks.forEach(clock => { %>
+            <div class="clock" data-timezone="<%= clock.timezone %>">
+                <h2><%= clock.name %></h2>
+                <p class="time"><%= clock.time %></p>
+                <small><%= clock.timezone %></small>
+            </div>
+        <% }) %>
+    </div>
+
+    <script>
+        function updateClocks() {
+            const clocks = document.querySelectorAll('.clock');
+            clocks.forEach(clock => {
+                const timezone = clock.getAttribute('data-timezone');
+                const timeElement = clock.querySelector('.time');
+                const currentTime = moment().tz(timezone).format('HH:mm:ss');
+                timeElement.textContent = currentTime;
+            });
+        }
+
+        setInterval(updateClocks, 1000); // Update every second
+        updateClocks(); // Initial call to set the time immediately
+    </script>
+</body>
+</html>

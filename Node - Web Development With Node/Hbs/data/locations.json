@@ -1,0 +1,19 @@
+{
+  "locations": [
+    {
+      "country": "USA",
+      "state": "California",
+      "city": "San Francisco"
+    },
+    {
+      "country": "USA",
+      "state": "New York",
+      "city": "New York"
+    },
+    {
+      "country": "UK",
+      "state": "England",
+      "city": "London"
+    }
+  ]
+}
