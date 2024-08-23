@@ -1,61 +1,34 @@
-#include <stdio.h>
+// PROGRAM 19 TO 29 : CALCULATE_AND_PRINT_ELECTRICITY_BILL (START) --------------------->
+#include<stdio.h>
+void main(){
+    int custId;
+    char custName[10];
+    float unit, unitCost, amount;
 
-main() {
-    int customerID, unitsConsumed;
-    char customerName[50];
-    float billAmount = 0.0, surcharge = 0.0, totalAmount = 0.0;
+    // GET VALUE FROM USER
+	printf("Enter the Customer Name : ");
+    scanf("%s", &custName);
+    printf("Enter the Customer ID : ");
+    scanf("%d", &custId);
+    printf("Enter the Unit consumed by the Customer : ");
+    scanf("%f", &unit);
 
-    // Input customer details
-    printf("Enter Customer ID: ");
-    scanf("%d", &customerID);
-    printf("Enter Customer Name: ");
-    scanf("%s", customerName);
-    printf("Enter Units Consumed: ");
-    scanf("%d", &unitsConsumed);
-
-    // Calculate bill amount based on units consumed
-    if (unitsConsumed <= 350) 
-	{
-        billAmount = unitsConsumed * 1.20;
-    } 
-	else if (unitsConsumed < 600) 
-	{
-        billAmount = 350 * 1.20 + (unitsConsumed - 350) * 1.50;
-    } 
-	else if (unitsConsumed < 800) 
-	{
-        billAmount = 350 * 1.20 + 250 * 1.50 + (unitsConsumed - 600) * 1.80;
-    } 
-	else 
-	{
-        billAmount = 350 * 1.20 + 250 * 1.50 + 200 * 1.80 + (unitsConsumed - 800) * 2.00;
+    // ELSE-IF LADDER CONDITION WITH AND(&&) OPERATOR
+    if(unit < 350){
+        unitCost = 1.20;
     }
-
-    // Check if bill exceeds Rs. 800 to apply surcharge
-    if (billAmount > 800) {
-        surcharge = billAmount * 0.18;
+    else if(unit >= 350 && unit < 600){
+            unitCost = 1.50;
     }
-
-    // Calculate total amount
-    totalAmount = billAmount + surcharge;
-
-    // Ensure the minimum bill amount is Rs. 256
-    if (totalAmount < 256) 
-	{
-        totalAmount = 256;
+    else if(unit >= 600 && unit < 800){
+            unitCost = 1.80;
     }
-
-    // Display the bill details
-    printf("\nElectricity Bill:\n");
-    printf("Customer ID: %d\n", customerID);
-    printf("Customer Name: %s\n", customerName);
-    printf("Units Consumed: %d\n", unitsConsumed);
-    printf("Bill Amount: Rs. %.2f\n", billAmount);
-    	if (surcharge > 0) 
-	{
-        printf("Surcharge: Rs. %.2f\n", surcharge);
+    else{
+        unitCost = 2.00;
     }
-    printf("Total Amount to be Paid: Rs. %.2f\n", totalAmount);
-
+    
+    amount = unit * unitCost;  // TOTAL BILL FORMULA
+        printf("per Unit Rate : %.2f", unitCost);
+        printf("\nTotal amount to be paid is : %.2f", amount);  // DISPLAY THE TOTAL AMOUNT OF BILL
 }
-
+// PROGRAM 19 TO 29 : CALCULATE_AND_PRINT_ELECTRICITY_BILL (END) --------------------->

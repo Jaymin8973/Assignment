@@ -1,40 +1,49 @@
-#include <stdio.h>
+// PROGRAM 19 TO 30 : CALCULATE_AND_PRINT_ELECTRICITY_BILL (START) --------------------->
+#include<stdio.h>
+void main(){
+    int custId;
+    char custName[10];
+    float unit, unitCost, amount, surcharge, sAmount;
 
-main() {
-    int monthNumber;
-    int year;
-    int daysInMonth;
+    // GET VALUE FROM USER
+	printf("Enter the Customer Name : ");
+    scanf("%s", &custName);
+    printf("Enter the Customer ID : ");
+    scanf("%d", &custId);
+    printf("Enter the Unit consumed by the Customer : ");
+    scanf("%f", &unit);
 
-    // Input the month number and the year
-    printf("Enter the month number (1 to 12): ");
-    scanf("%d", &monthNumber);
-    printf("Enter the year: ");
-    scanf("%d", &year);
-
-    // Determine the number of days in the month
-    switch (monthNumber) {
-        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-            daysInMonth = 31;
-            break;
-        case 4: case 6: case 9: case 11:
-            daysInMonth = 30;
-            break;
-        case 2:
-            // Check for leap year
-            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-                daysInMonth = 29;
-            } else {
-                daysInMonth = 28;
-            }
-            break;
-      
-	    default:
-            printf("Invalid month number. Please enter a number between 1 and 12.\n");
-            return 1;  // Exit the program with an error code
+    // ELSE-IF LADDER CONDITION WITH AND(&&) OPERATOR
+    if(unit < 350){
+        unitCost = 1.20;  // RUN-TIME DECALRED
+        amount = unit * unitCost;
+        printf("\nper Unit Rate : %.2f", unitCost);
+        printf("\nTotal amount to be paid is : %.2f", amount);
     }
-
-    // Display the number of days in the month
-    printf("Number of days in month %d: %d\n", monthNumber, daysInMonth);
-
+    else if(unit >= 350 && unit < 600){
+            unitCost = 1.50;  // RUN-TIME DECALRED
+            amount = unit * unitCost;
+            printf("\nper Unit Rate : %.2f", unitCost);
+            printf("\nTotal amount to be paid is : %.2f", amount);
+    }
+    else if(unit >= 600 && unit < 800){
+            unitCost = 1.80;  // RUN-TIME DECALRED
+            amount = unit * unitCost;
+            printf("\nper Unit Rate : %.2f", unitCost);
+            printf("\nTotal amount to be paid is : %.2f", amount);
+    }
+    else if(unit >= 800){
+        unitCost = 2.00;  // RUN-TIME DECALRED
+        amount = unit * unitCost;
+        surcharge = amount * 0.18;  // FORMULA OF FIND SURCHARGE VALUE WITH 18%
+        sAmount = surcharge + amount;  // SURCHARGE AMOUNT
+        printf("\nper Unit Rate : %.2f", unitCost);
+        printf("\nTotal Bill to be paid is : %.2f", amount);
+        printf("\nTotal Bill with 18% surcharge to be paid is : %.2f", sAmount);
+    }
+    else{
+    	amount < 256;
+    	printf("the minimum amount should be of Rs. 256/- ");
+	}
 }
-
+// PROGRAM 19 TO 30 : CALCULATE_AND_PRINT_ELECTRICITY_BILL (END) --------------------->
